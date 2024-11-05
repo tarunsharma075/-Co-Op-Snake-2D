@@ -5,11 +5,14 @@ using UnityEngine;
 public class SnakeMovement : MonoBehaviour
 {
     private Vector3 _direction = Vector2.left;
-   
+    [SerializeField] private int speed = 5;
 
     private void Update()
     {
+        Vector3 newpos = transform.position;
+        newpos += _direction * speed * Time.deltaTime; // Move in the direction vector
 
+        transform.position = newpos; // Update the position of the snake
 
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -28,16 +31,4 @@ public class SnakeMovement : MonoBehaviour
             _direction = Vector2.left;
         }
     }
-
-    private void FixedUpdate()
-    {
-        this.transform.position = new Vector3(
-            // rounding is done to make sure our snake is sort remain to a grid
-            Mathf.Round(this.transform.position.x) + _direction.x,
-             Mathf.Round(this.transform.position.y) + _direction.y,
-             0.0f
-            );
-    }
 }
-
-        
