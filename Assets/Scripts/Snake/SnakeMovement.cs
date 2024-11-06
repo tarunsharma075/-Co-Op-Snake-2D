@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
 
 public class SnakeMovement : MonoBehaviour
 {
-   private Vector2 _direction = Vector2.left;   
-
+   private Vector2 _direction = Vector2.left;
+    [SerializeField] private FoodLogic _foodLogic;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
@@ -47,5 +48,15 @@ public class SnakeMovement : MonoBehaviour
 
             );
      
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<FoodLogic>())
+        {
+            _foodLogic.OnHitPossitionChange();
+
+        }
     }
 }
