@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
 using System.Collections.Generic;
+using System;
 public class SnakeMovement : MonoBehaviour
 {
    private Vector2 _direction = Vector2.left;
@@ -12,8 +13,9 @@ public class SnakeMovement : MonoBehaviour
     private List<Transform> _segments;
 
     [SerializeField] private Transform _tailsegments;
+    [SerializeField] private BoxCollider2D _snakecollider;
 
-
+  
 
     private void Start()
     {
@@ -90,5 +92,17 @@ public class SnakeMovement : MonoBehaviour
         PreFabSegmentTail.position = _segments[_segments.Count - 1].position;
         _segments.Add(PreFabSegmentTail); 
 
+    }
+
+    public void shieldactivated()
+    {
+        StartCoroutine(shield());
+    }
+
+    private IEnumerator shield()
+    {
+        _snakecollider.enabled = false;
+        yield return new WaitForSeconds(3);
+        _snakecollider.enabled = true;
     }
 }

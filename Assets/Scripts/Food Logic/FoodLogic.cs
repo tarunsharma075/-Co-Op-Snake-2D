@@ -18,7 +18,7 @@ public class FoodLogic : MonoBehaviour
 
     }
 
-    private void RandomPositionofFood()
+    public  void RandomPositionofFood()
     {
         Bounds bounds = this._gridarea.bounds;
 
@@ -32,14 +32,14 @@ public class FoodLogic : MonoBehaviour
         while (true)
         {
             RandomPositionofFood();  // Call the function to set a new position
-            yield return new WaitForSeconds(5);  // Wait 2 seconds before moving again
+            yield return new WaitForSeconds(3);  // Wait 2 seconds before moving again
         }
     }
     public void OnHitPossitionChange()
     {
         RandomPositionofFood();
         _changeinscore.IncreaseScore(10);
-        
+
     }
 
    

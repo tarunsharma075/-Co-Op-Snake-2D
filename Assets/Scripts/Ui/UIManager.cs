@@ -27,6 +27,6 @@ public class UIManager : MonoBehaviour
     public void RefreshUi()
     {
         _scoretext.text = "Score : " + Score;
-
+        
     }
 }

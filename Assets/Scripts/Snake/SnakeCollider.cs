@@ -13,7 +13,7 @@ public class SnakeCollider : MonoBehaviour
         {
             maingameobj.SetActive(false);
             restartobj.SetActive(true);
-            Debug.Log("They collide");
+           
 
         }
     }
