@@ -4,11 +4,26 @@ using System.ComponentModel.Design;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
-
+using System.Collections.Generic;
 public class SnakeMovement : MonoBehaviour
 {
    private Vector2 _direction = Vector2.left;
     [SerializeField] private FoodLogic _foodLogic;
+    private List<Transform> _segments;
+
+    [SerializeField] private Transform _tailsegments;
+
+
+
+    private void Start()
+    {
+        
+        _segments = new List<Transform>();
+        _segments.Add(this.transform);
+    }
+
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
@@ -39,6 +54,13 @@ public class SnakeMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        for (int i = _segments.Count - 1; i > 0; i--)
+        {
+
+            _segments[i].position = _segments[i-1].position;
+        
+        }
         this.transform.position = new Vector3(
 
             Mathf.Round(this.transform.position.x) + _direction.x,
@@ -56,7 +78,17 @@ public class SnakeMovement : MonoBehaviour
         if (collision.gameObject.GetComponent<FoodLogic>())
         {
             _foodLogic.OnHitPossitionChange();
+            Grow();
 
         }
+    }
+
+
+    private void Grow()
+    {
+        Transform PreFabSegmentTail = Instantiate(this._tailsegments);
+        PreFabSegmentTail.position = _segments[_segments.Count - 1].position;
+        _segments.Add(PreFabSegmentTail); 
+
     }
 }
