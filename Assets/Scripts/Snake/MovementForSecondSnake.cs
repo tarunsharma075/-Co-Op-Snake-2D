@@ -7,9 +7,9 @@ using UnityEngine.Experimental.AI;
 using System.Collections.Generic;
 using System;
 using UnityEngine.SocialPlatforms.Impl;
-public class SnakeMovement : MonoBehaviour
+public class MovementForSecondSnake : MonoBehaviour
 {
-   private Vector2 _direction = Vector2.left;
+   private Vector2 _direction = Vector2.right;
     [SerializeField] private FoodLogic _foodLogic;
     private List<Transform> _segments;
 
@@ -32,23 +32,23 @@ public class SnakeMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
 
             _direction = Vector2.up;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             _direction = Vector2.down;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
 
 
             _direction = Vector2.right;
 
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
 
             _direction= Vector2.left;

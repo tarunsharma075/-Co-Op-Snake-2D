@@ -29,4 +29,16 @@ public class UIManager : MonoBehaviour
         _scoretext.text = "Score : " + Score;
         
     }
+
+    public void decrease_score(int lossscore) {
+
+        Score -= lossscore;
+
+        RefreshUi();
+        if (Score < 0) { 
+        Score= 0;   
+            RefreshUi() ;
+        
+        }
+    }
 }
