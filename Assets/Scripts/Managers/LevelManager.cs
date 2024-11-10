@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
    
     public void Awake()
     {
-        _button = GetComponent<Button>();   
+        
     }
 
     public void Start()

@@ -9,7 +9,7 @@ using System;
 using UnityEngine.SocialPlatforms.Impl;
 public class MovementForSecondSnake : MonoBehaviour
 {
-   private Vector2 _direction = Vector2.right;
+   private Vector2 _direction = Vector2.up;
     [SerializeField] private FoodLogic _foodLogic;
     private List<Transform> _segments;
 

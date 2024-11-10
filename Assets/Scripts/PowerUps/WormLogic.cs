@@ -17,6 +17,7 @@ public class WormLogic : MonoBehaviour
         {
             _snake.Decrease_Score();
             _snake.shrink();
+            RandomPositionofFood();
         }
     }
 
