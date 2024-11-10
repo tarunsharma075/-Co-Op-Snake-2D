@@ -8,14 +8,17 @@ using UnityEngine.SocialPlatforms.Impl;
     {
 
         [SerializeField] private SnakeMovement _snake;
+        [SerializeField] private BehaviourOfPowerups _chnageinpos;
 
-        private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
         {
 
             if (collision.gameObject.GetComponent<SnakeMovement>() != null)
             {
-                _snake.shieldactivated();
+            
+            _snake.shieldactivated();
+               
 
-            }
+        }
         }
     }

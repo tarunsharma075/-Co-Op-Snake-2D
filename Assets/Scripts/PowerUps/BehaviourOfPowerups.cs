@@ -11,7 +11,7 @@ public class BehaviourOfPowerups : MonoBehaviour
 
 
 
-    private void RandomPositionOfPowerups()
+   public  void RandomPositionOfPowerups()
     {
         Bounds bounds = this._border.bounds;
 
