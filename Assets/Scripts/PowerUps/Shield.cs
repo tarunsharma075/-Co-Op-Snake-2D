@@ -8,7 +8,8 @@ using UnityEngine.SocialPlatforms.Impl;
     {
 
         [SerializeField] private SnakeMovement _snake;
-        [SerializeField] private BehaviourOfPowerups _chnageinpos;
+    [SerializeField] private BehaviourOfPowerups _chnageinpos;
+    [SerializeField] private MovementForSecondSnake _snaketwo;
 
     private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -17,8 +18,16 @@ using UnityEngine.SocialPlatforms.Impl;
             {
             
             _snake.shieldactivated();
-               
+            _chnageinpos.RandomPositionOfPowerups();
 
+
+
+
+        }
+        else if(collision.gameObject.GetComponent<MovementForSecondSnake>() != null)
+        {
+            _snaketwo.shieldactivated();
+            _chnageinpos.RandomPositionOfPowerups();
         }
         }
     }

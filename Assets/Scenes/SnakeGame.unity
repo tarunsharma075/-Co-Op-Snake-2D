@@ -174,7 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e6116e77700094bb3d48e6d5c5a9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoretext: {fileID: 63352782}
+  _scoretextforsnakeone: {fileID: 809473319}
+  _scoretextforsnaketwo: {fileID: 63352782}
 --- !u!114 &63352782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +502,6 @@ Transform:
   - {fileID: 216828330}
   - {fileID: 411829706}
   - {fileID: 1434806788}
-  - {fileID: 344972772}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -669,7 +669,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1648110859}
-  m_Father: {fileID: 302013682}
+  m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &400991169
@@ -720,6 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gridarea: {fileID: 216828329}
   _changeinscore: {fileID: 809473318}
+  _changeinscoreforsecondsnake: {fileID: 63352781}
 --- !u!61 &400991172
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1412,6 +1413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gridArea: {fileID: 216828329}
   _snake: {fileID: 2060133335}
+  _snaketwo: {fileID: 1648110865}
 --- !u!212 &594067688
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1753,7 +1755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e6116e77700094bb3d48e6d5c5a9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoretext: {fileID: 809473319}
+  _scoretextforsnakeone: {fileID: 809473319}
+  _scoretextforsnaketwo: {fileID: 63352782}
 --- !u!114 &809473319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,6 +2066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _snake: {fileID: 2060133335}
   _chnageinpos: {fileID: 1434806787}
+  _snaketwo: {fileID: 1648110865}
 --- !u!1 &1109966090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdce96ce52e90a4aa9d74f6888f1288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 809473318}
+  scoreforsnakeone: {fileID: 809473318}
+  scoreforsnaketwo: {fileID: 63352781}
   _chnageinpos: {fileID: 1434806787}
 --- !u!1 &1141653618
 GameObject:
@@ -2844,7 +2849,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648110858}
   m_LocalRotation: {x: -0, y: -0, z: 0.7067226, w: 0.7074908}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -14.51, y: 0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2992,7 +2997,7 @@ MonoBehaviour:
   _foodLogic: {fileID: 400991171}
   _tailsegments: {fileID: 7485717196512905060, guid: 2e52037d073fbbb43982fe13db9b888c, type: 3}
   _snakecollider: {fileID: 1648110862}
-  score: {fileID: 0}
+  score: {fileID: 63352781}
 --- !u!1 &1682077947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,7 +3414,7 @@ MonoBehaviour:
   _foodLogic: {fileID: 400991171}
   _tailsegments: {fileID: 7485717196512905060, guid: 2e52037d073fbbb43982fe13db9b888c, type: 3}
   _snakecollider: {fileID: 2060133333}
-  score: {fileID: 63352781}
+  score: {fileID: 809473318}
 --- !u!114 &2060133336
 MonoBehaviour:
   m_ObjectHideFlags: 0

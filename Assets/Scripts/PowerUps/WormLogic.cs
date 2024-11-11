@@ -5,13 +5,19 @@ public class WormLogic : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D _gridArea;
     [SerializeField] private SnakeMovement _snake;
+    [SerializeField] private MovementForSecondSnake _snaketwo;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<SnakeMovement>() != null || collision.gameObject.GetComponent<MovementForSecondSnake>() != null)
+        if (collision.gameObject.GetComponent<SnakeMovement>() != null )
         {
             _snake.Decrease_Score();
             _snake.shrink();
+            RandomPositionOfWorm();
+        }else if (collision.gameObject.GetComponent<MovementForSecondSnake>() != null)
+        {
+            _snaketwo.Decrease_Score();
+            _snaketwo.shrink();
             RandomPositionOfWorm();
         }
     }

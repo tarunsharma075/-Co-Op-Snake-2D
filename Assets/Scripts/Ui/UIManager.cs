@@ -6,39 +6,72 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _scoretext;
-    private int Score = 0;
+    [SerializeField] private TextMeshProUGUI _scoretextforsnakeone;
+
+    [SerializeField] private TextMeshProUGUI _scoretextforsnaketwo;
+    private int Scoreforfirstsnake = 0;
+    private int Scoreforsecondtsnake = 0;
+
 
     private void Awake()
     {
-        _scoretext = GetComponent<TextMeshProUGUI>();
+        _scoretextforsnakeone = GetComponent<TextMeshProUGUI>();
+        _scoretextforsnaketwo = GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
     {
         RefreshUi();
+        RefreshUiForSecondSnake();
     }
-    public void IncreaseScore(int increment)
+    public void IncreaseScoreforsnakeone(int increment)
     {
-       Score += increment;
+       Scoreforfirstsnake += increment;
         RefreshUi();
+    }
+    public void IncreaseScoreforsnaketwo(int increment)
+    {
+        Scoreforsecondtsnake += increment;
+        RefreshUiForSecondSnake();
+
     }
 
     public void RefreshUi()
     {
-        _scoretext.text = "Score : " + Score;
-        
+        _scoretextforsnakeone.text = "Score : " + Scoreforfirstsnake;
+
+
+    }
+    public void RefreshUiForSecondSnake()
+    {
+        _scoretextforsnaketwo.text = "Score : " + Scoreforsecondtsnake;
+        ;
+
+
     }
 
-    public void decrease_score(int lossscore) {
+    public void DecreaseScoreForFirstSnake(int lossscore) {
 
-        Score -= lossscore;
+        Scoreforfirstsnake -= lossscore;
 
         RefreshUi();
-        if (Score < 0) { 
-        Score= 0;   
+        if (Scoreforfirstsnake < 0) { 
+        Scoreforfirstsnake= 0;   
             RefreshUi() ;
         
+        }
+    }
+    public void DecreaseScoreForSecondSnake(int lossscore)
+    {
+
+        Scoreforsecondtsnake  -= lossscore;
+
+        RefreshUiForSecondSnake();
+        if (Scoreforsecondtsnake < 0)
+        {
+            Scoreforsecondtsnake = 0;
+            RefreshUiForSecondSnake();
+
         }
     }
 }

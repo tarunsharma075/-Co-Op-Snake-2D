@@ -83,7 +83,7 @@ public class MovementForSecondSnake : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<FoodLogic>())
         {
-            _foodLogic.OnHitPossitionChange();
+            _foodLogic.OnHitPossitionChangeforsecondsnake();
             Grow();
 
         }
@@ -121,6 +121,7 @@ public class MovementForSecondSnake : MonoBehaviour
 
     public  void Decrease_Score()
     {
-        score.decrease_score(10);
+        score.DecreaseScoreForSecondSnake(10);
+        shrink();
     }
 }

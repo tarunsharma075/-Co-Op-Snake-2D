@@ -7,7 +7,8 @@ public class FoodLogic : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D _gridarea;
     [SerializeField] private UIManager _changeinscore;
-    
+    [SerializeField] private UIManager _changeinscoreforsecondsnake;
+
 
     private Coroutine foodCoroutine;
 
@@ -38,11 +39,17 @@ public class FoodLogic : MonoBehaviour
     public void OnHitPossitionChange()
     {
         RandomPositionofFood();
-        _changeinscore.IncreaseScore(10);
+        _changeinscore.IncreaseScoreforsnakeone(10);
+       
+
 
     }
 
-   
+    public void OnHitPossitionChangeforsecondsnake()
+    {
+        RandomPositionofFood();
+       _changeinscoreforsecondsnake.IncreaseScoreforsnaketwo(10);
+    }
 
-  
+
 }

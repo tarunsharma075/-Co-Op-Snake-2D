@@ -121,6 +121,6 @@ public class SnakeMovement : MonoBehaviour
 
     public  void Decrease_Score()
     {
-        score.decrease_score(10);
+        score.DecreaseScoreForFirstSnake(10);
     }
 }
