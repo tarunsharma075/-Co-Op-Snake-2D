@@ -6,8 +6,7 @@ using UnityEngine;
 public class FoodLogic : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D _gridarea;
-    [SerializeField] private UIManager _changeinscore;
-    [SerializeField] private UIManager _changeinscoreforsecondsnake;
+
 
 
     private Coroutine foodCoroutine;
@@ -36,20 +35,16 @@ public class FoodLogic : MonoBehaviour
             yield return new WaitForSeconds(3);  // Wait 2 seconds before moving again
         }
     }
-    public void OnHitPossitionChange()
+    public void OnHitPositionChange()
     {
         RandomPositionofFood();
-        _changeinscore.IncreaseScoreforsnakeone(10);
+       
        
 
 
     }
 
-    public void OnHitPossitionChangeforsecondsnake()
-    {
-        RandomPositionofFood();
-       _changeinscoreforsecondsnake.IncreaseScoreforsnaketwo(10);
-    }
+    
 
 
 }

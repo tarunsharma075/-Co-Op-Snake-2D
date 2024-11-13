@@ -4,30 +4,32 @@ using UnityEngine.SocialPlatforms.Impl;
 
 
 
-    public class Shield : MonoBehaviour
+public class Shield : MonoBehaviour
+{
+
+    [SerializeField] private BoxCollider2D _gridArea;
+
+    public void ChangethePosition()
     {
+        RandomPositionOfShield();
+    }
 
-        [SerializeField] private SnakeMovement _snake;
-    [SerializeField] private BehaviourOfPowerups _chnageinpos;
-    [SerializeField] private MovementForSecondSnake _snaketwo;
+    private void RandomPositionOfShield()
+    {
+        Bounds bounds = _gridArea.bounds;
+        float x = Random.Range(bounds.min.x, bounds.max.x);
+        float y = Random.Range(bounds.min.y, bounds.max.y);
+        transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
+    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator RepositionOfBanana()
+    {
+        while (true)
         {
-
-            if (collision.gameObject.GetComponent<SnakeMovement>() != null)
-            {
-            
-            _snake.shieldactivated();
-            _chnageinpos.RandomPositionOfPowerups();
-
-
-
-
-        }
-        else if(collision.gameObject.GetComponent<MovementForSecondSnake>() != null)
-        {
-            _snaketwo.shieldactivated();
-            _chnageinpos.RandomPositionOfPowerups();
-        }
+            RandomPositionOfShield(); // Set a new position
+            yield return new WaitForSeconds(3);  // Wait 3 seconds before moving again
         }
     }
+
+
+}

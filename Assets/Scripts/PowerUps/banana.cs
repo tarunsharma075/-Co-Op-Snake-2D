@@ -6,27 +6,29 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class banana : MonoBehaviour
 {
-    [SerializeField] private UIManager scoreforsnakeone;
-    [SerializeField] private UIManager scoreforsnaketwo;
-    [SerializeField] private BehaviourOfPowerups _chnageinpos;
+  
+    [SerializeField] private BoxCollider2D _gridarea;
 
-
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void ChangethePosition()
     {
-
-        if (collision.gameObject.GetComponent<SnakeMovement>() != null)
-        {
-            _chnageinpos.RandomPositionOfPowerups();
-            scoreforsnakeone.IncreaseScoreforsnakeone(30);
-
-
-        }
-        else if (collision.gameObject.GetComponent<MovementForSecondSnake>() != null)
-        {
-            _chnageinpos.RandomPositionOfPowerups();
-            scoreforsnaketwo.IncreaseScoreforsnaketwo(30);
-        }
-
+        RandomPositionOfBanana();
     }
-   
+
+    private void RandomPositionOfBanana()
+    {
+        Bounds bounds = _gridarea.bounds;
+        float x = Random.Range(bounds.min.x, bounds.max.x);
+        float y = Random.Range(bounds.min.y, bounds.max.y);
+        transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
+    }
+
+    private IEnumerator RepositionOfBanana()
+    {
+        while (true)
+        {
+            RandomPositionOfBanana(); // Set a new position
+            yield return new WaitForSeconds(3);  // Wait 3 seconds before moving again
+        }
+    }
+
 }

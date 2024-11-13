@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] private Button _buttonplay;
     [SerializeField] private GameObject _insctruction;
     [SerializeField] private GameObject _lobby;
+    [SerializeField] private GameObject _levelchooselobby;
+
 
     private void Start()
     {
@@ -19,6 +22,7 @@ public class LobbyManager : MonoBehaviour
     private void OnClickPlay()
     {
         StartCoroutine(Instructioslevelchanger());
+        SoundManager.Instance.PlaySoundEfffect(SoundManager.Sounds.button);
     }
 
     private IEnumerator Instructioslevelchanger()
@@ -26,7 +30,8 @@ public class LobbyManager : MonoBehaviour
         _lobby.SetActive(false);
         _insctruction.SetActive(true);
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("SnakeGame"); // Add the actual scene name
+        _insctruction.SetActive(false);
+        _levelchooselobby.SetActive(true);
     }
 }
 

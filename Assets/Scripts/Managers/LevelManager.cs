@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Button _button;
-   
+    private int _currentSceneIndex;
     public void Awake()
     {
         
@@ -18,11 +18,15 @@ public class LevelManager : MonoBehaviour
     public void Start()
     {
         _button.onClick.AddListener(OnClick);
+
+        
+        _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     private void OnClick()
     {
+        SoundManager.Instance.PlaySoundEfffect(SoundManager.Sounds.button);
 
-        SceneManager.LoadScene("SnakeGame");
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 }

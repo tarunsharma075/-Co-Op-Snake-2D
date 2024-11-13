@@ -6,72 +6,58 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _scoretextforsnakeone;
+    [SerializeField] private TextMeshProUGUI _scoretextforsnake;
 
-    [SerializeField] private TextMeshProUGUI _scoretextforsnaketwo;
-    private int Scoreforfirstsnake = 0;
-    private int Scoreforsecondtsnake = 0;
+   
+    [SerializeField] private GameObject _winscreenforsnakeTwo;
+    [SerializeField] private GameObject _winscreenforsnakeone;
+    [SerializeField] private GameObject _maingamescreen;
+    private int Score = 0;
+    
 
 
     private void Awake()
     {
-        _scoretextforsnakeone = GetComponent<TextMeshProUGUI>();
-        _scoretextforsnaketwo = GetComponent<TextMeshProUGUI>();
+        _scoretextforsnake = GetComponent<TextMeshProUGUI>();
+        
     }
 
     private void Start()
     {
         RefreshUi();
-        RefreshUiForSecondSnake();
+        
     }
-    public void IncreaseScoreforsnakeone(int increment)
+    public void IncreaseScore(int increment)
     {
-       Scoreforfirstsnake += increment;
+       Score += increment;
         RefreshUi();
+        if (Score >= 100)
+        {
+            SoundManager.Instance.StopBakcgroundMusic();
+            SoundManager.Instance.PlaySoundEfffect(SoundManager.Sounds.win); 
+            _maingamescreen.SetActive(false);
+        }
     }
-    public void IncreaseScoreforsnaketwo(int increment)
-    {
-        Scoreforsecondtsnake += increment;
-        RefreshUiForSecondSnake();
-
-    }
+    
 
     public void RefreshUi()
     {
-        _scoretextforsnakeone.text = "Score : " + Scoreforfirstsnake;
+        _scoretextforsnake.text = "Score : " + Score;
 
 
     }
-    public void RefreshUiForSecondSnake()
-    {
-        _scoretextforsnaketwo.text = "Score : " + Scoreforsecondtsnake;
-        ;
+   
 
+    public void DecreaseScore(int lossscore) {
 
-    }
-
-    public void DecreaseScoreForFirstSnake(int lossscore) {
-
-        Scoreforfirstsnake -= lossscore;
+        Score -= lossscore;
 
         RefreshUi();
-        if (Scoreforfirstsnake < 0) { 
-        Scoreforfirstsnake= 0;   
+        if (Score < 0) { 
+        Score= 0;   
             RefreshUi() ;
         
         }
     }
-    public void DecreaseScoreForSecondSnake(int lossscore)
-    {
-
-        Scoreforsecondtsnake  -= lossscore;
-
-        RefreshUiForSecondSnake();
-        if (Scoreforsecondtsnake < 0)
-        {
-            Scoreforsecondtsnake = 0;
-            RefreshUiForSecondSnake();
-
-        }
-    }
+   
 }
