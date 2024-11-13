@@ -7,10 +7,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoretextforsnake;
-
-   
-    [SerializeField] private GameObject _winscreenforsnakeTwo;
-    [SerializeField] private GameObject _winscreenforsnakeone;
+    [SerializeField] private GameObject _winscreenforsnake;
     [SerializeField] private GameObject _maingamescreen;
     private int Score = 0;
     
@@ -36,6 +33,7 @@ public class UIManager : MonoBehaviour
             SoundManager.Instance.StopBakcgroundMusic();
             SoundManager.Instance.PlaySoundEfffect(SoundManager.Sounds.win); 
             _maingamescreen.SetActive(false);
+            _winscreenforsnake.SetActive(isActiveAndEnabled);
         }
     }
     

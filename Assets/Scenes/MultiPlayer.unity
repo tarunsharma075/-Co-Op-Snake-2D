@@ -2611,8 +2611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoretextforsnake: {fileID: 1009729018}
-  _winscreenforsnakeTwo: {fileID: 1993114514}
-  _winscreenforsnakeone: {fileID: 668022899}
+  _winscreenforsnake: {fileID: 1993114514}
   _maingamescreen: {fileID: 597681329}
 --- !u!114 &1009729018
 MonoBehaviour:
@@ -3023,8 +3022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoretextforsnake: {fileID: 1366926227}
-  _winscreenforsnakeTwo: {fileID: 1993114514}
-  _winscreenforsnakeone: {fileID: 668022899}
+  _winscreenforsnake: {fileID: 668022899}
   _maingamescreen: {fileID: 597681329}
 --- !u!222 &1366926229
 CanvasRenderer:
