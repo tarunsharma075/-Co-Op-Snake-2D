@@ -9,16 +9,16 @@ public class FoodLogic : MonoBehaviour
 
 
 
-    private Coroutine foodCoroutine;
+    private Coroutine FoodCoroutine;
 
     private void Start()
     {
-        RandomPositionofFood();
+        RandomPositionOfFood();
         StartCoroutine(RepositionFoodRoutine());
 
     }
 
-    public  void RandomPositionofFood()
+    public  void RandomPositionOfFood()
     {
         Bounds bounds = this._gridarea.bounds;
 
@@ -31,13 +31,13 @@ public class FoodLogic : MonoBehaviour
     {
         while (true)
         {
-            RandomPositionofFood();  // Call the function to set a new position
+            RandomPositionOfFood();  // Call the function to set a new position
             yield return new WaitForSeconds(3);  // Wait 2 seconds before moving again
         }
     }
     public void OnHitPositionChange()
     {
-        RandomPositionofFood();
+        RandomPositionOfFood();
        
        
 

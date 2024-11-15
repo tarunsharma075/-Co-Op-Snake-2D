@@ -31,5 +31,9 @@ public class Shield : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        
+    }
 
 }

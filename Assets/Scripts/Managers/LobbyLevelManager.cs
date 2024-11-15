@@ -11,14 +11,10 @@ public class LobbyLevelManager : MonoBehaviour
     [SerializeField] string _level;
     void Start()
     {
-       
+        _leveltochoose.onClick.AddListener(OnClick);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        _leveltochoose.onClick.AddListener(OnClick);  
-    }
+   
 
     private void OnClick()
     {
