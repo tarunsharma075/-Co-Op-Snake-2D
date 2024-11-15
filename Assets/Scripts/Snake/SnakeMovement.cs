@@ -22,18 +22,18 @@ public class SnakeMovement : MonoBehaviour
 
     [SerializeField] private UIManager score;
     [SerializeField] private GameObject _shieldActivationIndicator;
-    [SerializeField] private Snaketype Player;
+    [SerializeField] private Snaketype _player;
 
 
 
     private void Awake()
     {
-        if (Player == Snaketype.snakeone)
+        if (_player == Snaketype.snakeone)
         {
             _direction = Vector2.right;
 
         }
-        else if (Player == Snaketype.snaketwo) {
+        else if (_player == Snaketype.snaketwo) {
             _direction = Vector2.up;
         }
     }
@@ -53,7 +53,7 @@ public class SnakeMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Player == Snaketype.snakeone)
+        if (_player == Snaketype.snakeone)
         {
             if (Input.GetKeyDown(KeyCode.W) && _direction != Vector2.down)
             {
@@ -72,7 +72,7 @@ public class SnakeMovement : MonoBehaviour
                 _direction = Vector2.left;
             }
         }
-        else if (Player == Snaketype.snaketwo)
+        else if (_player == Snaketype.snaketwo)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) && _direction != Vector2.down)
             {
@@ -136,7 +136,7 @@ public class SnakeMovement : MonoBehaviour
                 SoundManager.Instance.PlaySoundEfffect(SoundManager.Sounds.worm);
                 _wormlogic.ChangeInPosition();
                 DecreaseScore();
-                shrink();
+                Shrink();
                 
             
            
@@ -148,7 +148,7 @@ public class SnakeMovement : MonoBehaviour
                 SoundManager.Instance.PlaySoundEfffect(SoundManager.Sounds.shield);
 
                 _shieldLogic.ChangethePosition();
-                shieldactivated();
+                ShieldActivated();
             
         }
         if (collision.gameObject.GetComponent<Banana>())
@@ -173,22 +173,18 @@ public class SnakeMovement : MonoBehaviour
 
     }
 
-    public void shieldactivated()
+    public void ShieldActivated()
     {
-        StartCoroutine(shield());
+        StartCoroutine(Shield());
     }
 
-    private IEnumerator shield()
+    private IEnumerator Shield()
     {
-        if (Player == Snaketype.snakeone)
+        if (_player == Snaketype.snakeone)
         {
-            _snakecollider.enabled = false;
-            _shieldActivationIndicator.SetActive(true);
-            yield return new WaitForSeconds(3);
-            _snakecollider.enabled = true;
-            _shieldActivationIndicator.SetActive(false);
-        }else if(Player == Snaketype.snaketwo)
-        {
+
+
+
             _snakecollider.enabled = false;
             _shieldActivationIndicator.SetActive(true);
             yield return new WaitForSeconds(3);
@@ -197,7 +193,7 @@ public class SnakeMovement : MonoBehaviour
         }
     }
 
-    public void shrink()
+    public void Shrink()
     {
         for (int i = _segments.Count - 1; i >0; i--)
         {
@@ -209,7 +205,7 @@ public class SnakeMovement : MonoBehaviour
     public  void DecreaseScore()
     {
             score.DecreaseScore(50);
-            shrink();
+            Shrink();
     }
 
     public void IncreaseScore()

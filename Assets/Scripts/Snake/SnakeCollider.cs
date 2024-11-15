@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SnakeCollider : MonoBehaviour
 {
-    [SerializeField] private GameObject maingameobj;
-    [SerializeField] private GameObject restartobj;
+    [SerializeField] private GameObject _maingameobj;
+    [SerializeField] private GameObject _restartobj;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,8 +13,8 @@ public class SnakeCollider : MonoBehaviour
         {
             SoundManager.Instance.StopBakcgroundMusic();
             SoundManager.Instance.PlaySoundEfffect(SoundManager.Sounds.death);
-            maingameobj.SetActive(false);
-            restartobj.SetActive(true);
+            _maingameobj.SetActive(false);
+            _restartobj.SetActive(true);
 
 
         }
