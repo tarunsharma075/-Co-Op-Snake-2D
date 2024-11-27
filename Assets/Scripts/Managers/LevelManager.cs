@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor.Timeline;
 
 public class LevelManager : MonoBehaviour
 {
@@ -25,8 +26,16 @@ public class LevelManager : MonoBehaviour
 
     private void OnClick()
     {
+        StartCoroutine(NextScreenLoading());
+    }
+
+    private  IEnumerator NextScreenLoading()
+    {
         SoundManager.Instance.PlaySoundEfffect(SoundManager.Sounds.button);
 
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(_currentSceneIndex);
+
+        SoundManager.Instance.PlayBackgroudnMusic(SoundManager.Sounds.background);
     }
 }

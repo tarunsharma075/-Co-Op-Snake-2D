@@ -4,8 +4,11 @@ using UnityEngine;
 public class WormLogic : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D _gridArea;
-   
-  
+
+    private void Start()
+    {
+        StartCoroutine(RepositionOfWorm());
+    }
     public void ChangeInPosition()
     {
         RandomPositionOfWorm();

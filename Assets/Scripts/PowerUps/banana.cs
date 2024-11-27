@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class banana : MonoBehaviour
+public class Banana : MonoBehaviour
 {
   
     [SerializeField] private BoxCollider2D _gridarea;
@@ -22,13 +22,13 @@ public class banana : MonoBehaviour
         transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
     }
 
-    private IEnumerator RepositionOfBanana()
-    {
-        while (true)
-        {
-            RandomPositionOfBanana(); // Set a new position
-            yield return new WaitForSeconds(3);  // Wait 3 seconds before moving again
-        }
-    }
+    //private IEnumerator RepositionOfBanana()
+    //{
+    //    while (true)
+    //    {
+    //        RandomPositionOfBanana(); // Set a new position
+    //        yield return new WaitForSeconds(3);  // Wait 3 seconds before moving again
+    //    }
+    //}
 
 }

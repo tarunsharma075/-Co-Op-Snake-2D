@@ -6,8 +6,8 @@ using UnityEngine;
 public class BehaviourOfPowerups : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D _border;
-    [SerializeField] private GameObject _bananavisual;
-    [SerializeField] private GameObject _shieldvisual;
+    [SerializeField] private GameObject _childvisual;
+  
 
 
 
@@ -27,19 +27,19 @@ public class BehaviourOfPowerups : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(RandomNessInPowerupsPositionForBanana());
-        StartCoroutine(RandomNessInPowerupsPositionForShield());
+        StartCoroutine(RandomNessInPowerups());
+
     }
 
-    private IEnumerator RandomNessInPowerupsPositionForBanana()
+    private IEnumerator RandomNessInPowerups()
     {
         while (true)
         {
-            _bananavisual.SetActive(false);
+            _childvisual.SetActive(false);
 
 
             yield return new WaitForSeconds(Random.Range(10, 15));
-            _bananavisual.SetActive(true);
+            _childvisual.SetActive(true);
             RandomPositionOfPowerups();
             //Debug.Log("powerup is inactive now");
             yield return new WaitForSeconds(3);
@@ -48,21 +48,4 @@ public class BehaviourOfPowerups : MonoBehaviour
 
     }
 
-    private IEnumerator RandomNessInPowerupsPositionForShield()
-    {
-        while (true) {
-
-
-            _shieldvisual.SetActive(false);
-            yield return new WaitForSeconds(Random.Range(15, 20));
-            _shieldvisual.SetActive(true);
-            RandomPositionOfPowerups();
-            yield return new WaitForSeconds(5);
-
-        }
-
-
-
-
-    }
 }
